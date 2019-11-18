@@ -1,0 +1,87 @@
+
+
+<ivy-module version="1.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info organisation="hftn" module="java-service-sample"/>
+    <!--<properties file="${ivy.settings.dir}/ivysettings.properties"/>
+    <settings defaultResolver="libraries"/>
+    <caches defaultCacheDir="${ivy.settings.dir}/ivy-cache"/>
+
+    <configurations defaultconfmapping="*->default">
+        <conf name="core" description="only ivy jar, without any dependencies"/>
+        <conf name="test" description="dependencies used for junit testing ivy" visibility="private"/>
+        <conf name="source" description="ivy sources"/>
+    </configurations>
+    <publications>
+        <artifact name="ivy" type="jar" conf="core"/>
+        <artifact name="ivy" type="source" ext="jar" conf="source"/>
+    </publications>-->
+    <dependencies>
+
+        <dependency org="org.slf4j" name="slf4j-api" rev="2.0.0-alpha0"/>
+        <dependency org="org.slf4j" name="slf4j-log4j12" rev="2.0.0-alpha1"/>
+
+        <dependency org="com.google.inject" name="guice" rev="4.2.2"/>
+        <dependency org="com.google.inject.extensions" name="guice-assistedinject" rev="4.2.2"/>
+        <dependency org="com.google.inject.extensions" name="guice-multibindings" rev="4.2.2"/>
+        <dependency org="com.google.inject.extensions" name="guice-servlet" rev="4.2.2"/>
+
+        <dependency org="com.google.guava" name="guava" rev="27.0-jre"/>
+
+        <dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.10.0"/>
+        <dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.10.0"/>
+        <dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.10.0"/>
+
+        <dependency org="com.fasterxml.jackson.module" name="jackson-module-jaxb-annotations" rev="2.10.0"/>
+
+        <dependency org="org.codehaus.jackson" name="jackson-core-asl" rev="1.9.13"/>
+        <dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="1.9.13"/>
+
+ <!--       <dependency org="com.sun.jersey" name="jersey-client" rev="1.19.4"/>
+        <dependency org="com.sun.jersey" name="jersey-server" rev="1.19.4"/>
+        <dependency org="com.sun.jersey" name="jersey-servlet" rev="1.19.4"/>
+        <dependency org="com.sun.jersey.contribs" name="jersey-guice" rev="1.19.4"/>
+        <dependency org="com.sun.jersey" name="jersey-json" rev="1.19.4"/>
+        <dependency org="com.sun.jersey" name="jersey-core" rev="1.19.4"/>-->
+
+        <dependency org="org.glassfish.jersey.core" name="jersey-client" rev="2.29.1"/>
+        <dependency org="org.glassfish.jersey.core" name="jersey-server" rev="2.29.1"/>
+        <dependency org="org.glassfish.jersey.core" name="jersey-common" rev="2.29.1"/>
+        <dependency org="org.glassfish.jersey.containers" name="jersey-container-servlet" rev="2.29.1"/>
+        <dependency org="org.glassfish.jersey.containers" name="jersey-container-servlet-core" rev="2.29.1"/>
+        <dependency org="org.glassfish.jersey.inject" name="jersey-hk2" rev="2.29.1"/>
+        <dependency org="org.glassfish.jersey.media" name="jersey-media-json-jackson" rev="2.29.1"/>
+        <dependency org="org.glassfish.jersey.media" name="jersey-media-moxy" rev="2.29.1"/>
+        <dependency org="org.glassfish.jersey.ext" name="jersey-entity-filtering" rev="2.29.1"/>
+
+        <dependency org="org.glassfish.hk2" name="hk2-api" rev="2.6.1"/>
+        <dependency org="org.glassfish.hk2" name="hk2-locator" rev="2.6.1"/>
+        <dependency org="org.glassfish.hk2" name="guice-bridge" rev="2.6.1"/>
+
+        <dependency org="javax.ws.rs" name="javax.ws.rs-api" rev="2.0.1"/>
+        <dependency org="javax.servlet" name="javax.servlet-api" rev="4.0.1"/>
+        <dependency org="javax.inject" name="javax.inject" rev="1"/>
+        <dependency org="javax.annotation" name="javax.annotation-api" rev="1.3.2"/>
+        <dependency org="javax.xml.bind" name="jaxb-api" rev="2.3.1"/>
+        <dependency org="javax.validation" name="validation-api" rev="2.0.1.Final"/>
+
+        <dependency org="com.sun.xml.bind" name="jaxb-impl" rev="2.3.1"/>
+        <dependency org="com.sun.xml.bind" name="jaxb-core" rev="2.3.0.1"/>
+
+        <dependency org="org.eclipse.jetty" name="jetty-server" rev="9.4.22.v20191022"/>
+        <dependency org="org.eclipse.jetty" name="jetty-servlet" rev="9.4.22.v20191022"/>
+        <dependency org="org.eclipse.jetty" name="jetty-util" rev="9.4.22.v20191022"/>
+        <dependency org="org.eclipse.jetty" name="jetty-http" rev="9.4.22.v20191022"/>
+        <dependency org="org.eclipse.jetty" name="jetty-io" rev="9.4.22.v20191022"/>
+        <dependency org="org.eclipse.jetty" name="jetty-security" rev="9.4.22.v20191022"/>
+
+        <dependency org="org.projectlombok" name="lombok" rev="1.18.10"/>
+
+        <dependency org="aopalliance" name="aopalliance" rev="1.0"/>
+
+        <dependency org="commons-lang" name="commons-lang" rev="2.0"/>
+        <dependency org="commons-cli" name="commons-cli" rev="1.0"/>
+    </dependencies>
+</ivy-module>
+
