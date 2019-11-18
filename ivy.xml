@@ -4,19 +4,6 @@
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
     <info organisation="hftn" module="java-service-sample"/>
-    <!--<properties file="${ivy.settings.dir}/ivysettings.properties"/>
-    <settings defaultResolver="libraries"/>
-    <caches defaultCacheDir="${ivy.settings.dir}/ivy-cache"/>
-
-    <configurations defaultconfmapping="*->default">
-        <conf name="core" description="only ivy jar, without any dependencies"/>
-        <conf name="test" description="dependencies used for junit testing ivy" visibility="private"/>
-        <conf name="source" description="ivy sources"/>
-    </configurations>
-    <publications>
-        <artifact name="ivy" type="jar" conf="core"/>
-        <artifact name="ivy" type="source" ext="jar" conf="source"/>
-    </publications>-->
     <dependencies>
 
         <dependency org="org.slf4j" name="slf4j-api" rev="2.0.0-alpha0"/>
@@ -37,13 +24,6 @@
 
         <dependency org="org.codehaus.jackson" name="jackson-core-asl" rev="1.9.13"/>
         <dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="1.9.13"/>
-
- <!--       <dependency org="com.sun.jersey" name="jersey-client" rev="1.19.4"/>
-        <dependency org="com.sun.jersey" name="jersey-server" rev="1.19.4"/>
-        <dependency org="com.sun.jersey" name="jersey-servlet" rev="1.19.4"/>
-        <dependency org="com.sun.jersey.contribs" name="jersey-guice" rev="1.19.4"/>
-        <dependency org="com.sun.jersey" name="jersey-json" rev="1.19.4"/>
-        <dependency org="com.sun.jersey" name="jersey-core" rev="1.19.4"/>-->
 
         <dependency org="org.glassfish.jersey.core" name="jersey-client" rev="2.29.1"/>
         <dependency org="org.glassfish.jersey.core" name="jersey-server" rev="2.29.1"/>
