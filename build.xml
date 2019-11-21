@@ -1,268 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="java-service-sample"
-         default="all"
-         xmlns:ivy="antlib:org.apache.ivy.ant">
+<project xmlns:ivy="antlib:org.apache.ivy.ant"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         name="java-service-sample" default="build"
+         xsi:schemaLocation="antlib:org.apache.ivy.ant ">
 
 
-  <property file="build.properties"/>
+    <property file="build.properties"/>
 
-  <property name="compiler.debug" value="on"/>
-  <property name="compiler.generate.no.warnings" value="off"/>
-  <property name="compiler.args" value=""/>
-  <property name="compiler.max.memory" value="700m"/>
-  <patternset id="ignored.files">
-    <exclude name="**/*~/**"/>
-    <exclude name="**/.DS_Store/**"/>
-    <exclude name="**/.git/**"/>
-  </patternset>
-  <patternset id="library.patterns">
-    <include name="*.jar"/>
-  </patternset>
-  <patternset id="compiler.resources">
-    <exclude name="**/?*.java"/>
-    <exclude name="**/?*.form"/>
-    <exclude name="**/?*.class"/>
-  </patternset>
+    <property name="compiler.debug" value="on"/>
 
-  <!-- JDK definitions -->
+    <property name="compiler.debug" value="on"/>
+    <property name="compiler.generate.no.warnings" value="off"/>
+    <property name="compiler.args" value=""/>
+    <property name="compiler.max.memory" value="700m"/>
+    <patternset id="ignored.files">
+        <exclude name="**/*~/**"/>
+        <exclude name="**/.DS_Store/**"/>
+        <exclude name="**/.git/**"/>
+    </patternset>
+    <patternset id="compiler.resources">
+        <exclude name="**/?*.java"/>
+        <exclude name="**/?*.class"/>
+    </patternset>
 
-  <property name="jdk.bin.11" value="${jdk.home.11}/bin"/>
-  <path id="jdk.classpath.11">
-    <fileset dir="${jdk.home.11}">
-      <include name="../Home!/java.base"/>
-      <include name="../Home!/java.compiler"/>
-      <include name="../Home!/java.datatransfer"/>
-      <include name="../Home!/java.desktop"/>
-      <include name="../Home!/java.instrument"/>
-      <include name="../Home!/java.logging"/>
-      <include name="../Home!/java.management"/>
-      <include name="../Home!/java.management.rmi"/>
-      <include name="../Home!/java.naming"/>
-      <include name="../Home!/java.net.http"/>
-      <include name="../Home!/java.prefs"/>
-      <include name="../Home!/java.rmi"/>
-      <include name="../Home!/java.scripting"/>
-      <include name="../Home!/java.se"/>
-      <include name="../Home!/java.security.jgss"/>
-      <include name="../Home!/java.security.sasl"/>
-      <include name="../Home!/java.smartcardio"/>
-      <include name="../Home!/java.sql"/>
-      <include name="../Home!/java.sql.rowset"/>
-      <include name="../Home!/java.transaction.xa"/>
-      <include name="../Home!/java.xml"/>
-      <include name="../Home!/java.xml.crypto"/>
-      <include name="../Home!/jdk.accessibility"/>
-      <include name="../Home!/jdk.aot"/>
-      <include name="../Home!/jdk.attach"/>
-      <include name="../Home!/jdk.charsets"/>
-      <include name="../Home!/jdk.compiler"/>
-      <include name="../Home!/jdk.crypto.cryptoki"/>
-      <include name="../Home!/jdk.crypto.ec"/>
-      <include name="../Home!/jdk.dynalink"/>
-      <include name="../Home!/jdk.editpad"/>
-      <include name="../Home!/jdk.hotspot.agent"/>
-      <include name="../Home!/jdk.httpserver"/>
-      <include name="../Home!/jdk.internal.ed"/>
-      <include name="../Home!/jdk.internal.jvmstat"/>
-      <include name="../Home!/jdk.internal.le"/>
-      <include name="../Home!/jdk.internal.opt"/>
-      <include name="../Home!/jdk.internal.vm.ci"/>
-      <include name="../Home!/jdk.internal.vm.compiler"/>
-      <include name="../Home!/jdk.internal.vm.compiler.management"/>
-      <include name="../Home!/jdk.jartool"/>
-      <include name="../Home!/jdk.javadoc"/>
-      <include name="../Home!/jdk.jcmd"/>
-      <include name="../Home!/jdk.jconsole"/>
-      <include name="../Home!/jdk.jdeps"/>
-      <include name="../Home!/jdk.jdi"/>
-      <include name="../Home!/jdk.jdwp.agent"/>
-      <include name="../Home!/jdk.jfr"/>
-      <include name="../Home!/jdk.jlink"/>
-      <include name="../Home!/jdk.jshell"/>
-      <include name="../Home!/jdk.jsobject"/>
-      <include name="../Home!/jdk.jstatd"/>
-      <include name="../Home!/jdk.localedata"/>
-      <include name="../Home!/jdk.management"/>
-      <include name="../Home!/jdk.management.agent"/>
-      <include name="../Home!/jdk.management.jfr"/>
-      <include name="../Home!/jdk.naming.dns"/>
-      <include name="../Home!/jdk.naming.rmi"/>
-      <include name="../Home!/jdk.net"/>
-      <include name="../Home!/jdk.pack"/>
-      <include name="../Home!/jdk.rmic"/>
-      <include name="../Home!/jdk.scripting.nashorn"/>
-      <include name="../Home!/jdk.scripting.nashorn.shell"/>
-      <include name="../Home!/jdk.sctp"/>
-      <include name="../Home!/jdk.security.auth"/>
-      <include name="../Home!/jdk.security.jgss"/>
-      <include name="../Home!/jdk.unsupported"/>
-      <include name="../Home!/jdk.unsupported.desktop"/>
-      <include name="../Home!/jdk.xml.dom"/>
-      <include name="../Home!/jdk.zipfs"/>
-    </fileset>
-  </path>
+    <!-- JDK definitions -->
 
-  <property name="project.jdk.home" value="${jdk.home.11}"/>
-  <property name="project.jdk.bin" value="${jdk.bin.11}"/>
-  <property name="project.jdk.classpath" value="jdk.classpath.11"/>
-  <!-- Register Custom Compiler Taskdefs -->
-  <property name="javac2.home" value="${idea.home}/lib"/>
-  <path id="javac2.classpath">
-    <fileset dir="${javac2.home}">
-      <include name="javac2.jar"/>
-      <include name="jdom.jar"/>
-      <include name="asm-all*.jar"/>
-      <include name="forms-*.jar"/>
-    </fileset>
-  </path>
-  <target name="register.custom.compilers">
-    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
-    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions"
-             classpathref="javac2.classpath"/>
-  </target>
+    <property name="jdk.bin.11" value="${jdk.home.11}/bin"/>
+    <path id="jdk.classpath.11">
+        <fileset dir="${jdk.home.11}"/>
+    </path>
 
-  <!-- Modules -->
+    <property name="jdk.home" value="${jdk.home.11}"/>
+    <property name="jdk.bin" value="${jdk.bin.11}"/>
+    <property name="jdk.classpath" value="jdk.classpath.11"/>
+    <!-- Register Custom Compiler Taskdefs -->
+    <property name="javac2.home" value="${idea.home}/lib"/>
+    <path id="javac2.classpath">
+        <fileset dir="${javac2.home}">
+            <include name="javac2.jar"/>
+            <include name="asm-all*.jar"/>
+        </fileset>
+    </path>
+    <target name="register.custom.compilers">
+        <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+        <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions"
+                 classpathref="javac2.classpath"/>
+    </target>
+
+    <!-- Modules -->
 
 
-  <!-- Module java-service-sample -->
+    <!-- Module java-service-sample -->
 
-  <dirname property="module.java-service-sample.basedir" file="${ant.file}"/>
+    <path id="lib.classpath">
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+    <property name="lib.dir" value="lib.classpath"/>
 
+    <dirname property="build.basedir" file="${ant.file}"/>
+    <property name="target.dir" value="${build.basedir}/target"/>
 
-  <property name="module.jdk.home.java-service-sample" value="${project.jdk.home}"/>
-  <property name="module.jdk.bin.java-service-sample" value="${project.jdk.bin}"/>
-  <property name="module.jdk.classpath.java-service-sample" value="${project.jdk.classpath}"/>
+    <property name="compiler.all.args" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
 
-  <property name="compiler.args.java-service-sample" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+    <property name="target.app.dir" value="${target.dir}/app"/>
+    <property name="target.test.dir" value="${target.dir}/test"/>
 
-  <property name="java-service-sample.output.dir"
-            value="${module.java-service-sample.basedir}/target/app/java-service-sample"/>
-  <property name="java-service-sample.testoutput.dir"
-            value="${module.java-service-sample.basedir}/target/test/java-service-sample"/>
+    <path id="java-service-sample.module.bootclasspath">
+        <!-- Paths to be included in compilation bootclasspath -->
+    </path>
 
-  <path id="java-service-sample.module.bootclasspath">
-    <!-- Paths to be included in compilation bootclasspath -->
-  </path>
+    <path id="java-service-sample.module.production.classpath">
+        <path refid="${jdk.classpath}"/>
+        <path refid="${lib.dir}"/>
+    </path>
 
-  <path id="java-service-sample.module.production.classpath">
-    <path refid="${module.jdk.classpath.java-service-sample}"/>
-  </path>
+    <path id="java-service-sample.module.classpath">
+        <path refid="${jdk.classpath}"/>
+        <path refid="${lib.dir}"/>
+        <pathelement location="${target.app.dir}"/>
+    </path>
 
-  <path id="java-service-sample.runtime.production.module.classpath">
-    <pathelement location="${java-service-sample.output.dir}"/>
-  </path>
+    <patternset id="excluded.files.from.compilation">
+        <patternset refid="ignored.files"/>
+    </patternset>
 
-  <path id="java-service-sample.module.classpath">
-    <path refid="${module.jdk.classpath.java-service-sample}"/>
-    <pathelement location="${java-service-sample.output.dir}"/>
-  </path>
+    <path id="java-service-sample.module.sourcepath">
+        <dirset dir="${build.basedir}">
+            <include name="src/app/java"/>
+            <include name="src/app/resources"/>
+        </dirset>
+    </path>
 
-  <path id="java-service-sample.runtime.module.classpath">
-    <pathelement location="${java-service-sample.testoutput.dir}"/>
-    <pathelement location="${java-service-sample.output.dir}"/>
-  </path>
-
-
-  <patternset id="excluded.from.module.java-service-sample">
-    <patternset refid="ignored.files"/>
-  </patternset>
-
-  <patternset id="excluded.from.compilation.java-service-sample">
-    <patternset refid="excluded.from.module.java-service-sample"/>
-  </patternset>
-
-  <path id="java-service-sample.module.sourcepath">
-    <dirset dir="${module.java-service-sample.basedir}">
-      <include name="src/app/java"/>
-      <include name="src/app/resources"/>
-    </dirset>
-  </path>
-
-  <path id="java-service-sample.module.test.sourcepath">
-    <dirset dir="${module.java-service-sample.basedir}">
-      <include name="src/test/java"/>
-      <include name="src/test/resources"/>
-    </dirset>
-  </path>
+    <path id="java-service-sample.module.test.sourcepath">
+        <dirset dir="${build.basedir}">
+            <include name="src/test/java"/>
+            <include name="src/test/resources"/>
+        </dirset>
+    </path>
 
 
-  <target name="compile.module.java-service-sample"
-          depends="compile.module.java-service-sample.production,compile.module.java-service-sample.tests"
-          description="Compile module java-service-sample"/>
+    <target name="compile.module.java-service-sample"
+            depends="compile.module.java-service-sample.production,compile.module.java-service-sample.tests"
+            description="Compile module java-service-sample"/>
 
-  <target name="compile.module.java-service-sample.production" depends="register.custom.compilers"
-          description="Compile module java-service-sample; production classes">
-    <mkdir dir="${java-service-sample.output.dir}"/>
-    <javac2 destdir="${java-service-sample.output.dir}" debug="${compiler.debug}"
-            nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true"
-            executable="${module.jdk.bin.java-service-sample}/javac">
-      <compilerarg line="${compiler.args.java-service-sample}"/>
-      <bootclasspath refid="java-service-sample.module.bootclasspath"/>
-      <classpath refid="java-service-sample.module.production.classpath"/>
-      <src refid="java-service-sample.module.sourcepath"/>
-      <patternset refid="excluded.from.compilation.java-service-sample"/>
-    </javac2>
+    <target name="compile.module.java-service-sample.production"
+            depends="register.custom.compilers"
+            description="Compile module java-service-sample; production classes">
+        <mkdir dir="${target.app.dir}"/>
+        <javac2 destdir="${target.app.dir}"
+                debug="${compiler.debug}"
+                includeantruntime="false"
+                nowarn="${compiler.generate.no.warnings}"
+                memorymaximumsize="${compiler.max.memory}"
+                fork="true"
+                executable="${jdk.bin}/javac">
+            <compilerarg line="${compiler.all.args}"/>
+            <bootclasspath refid="java-service-sample.module.bootclasspath"/>
+            <classpath refid="java-service-sample.module.production.classpath"/>
+            <src refid="java-service-sample.module.sourcepath"/>
+            <patternset refid="excluded.files.from.compilation"/>
+        </javac2>
 
-    <copy todir="${java-service-sample.output.dir}">
-      <fileset dir="${module.java-service-sample.basedir}/src/app/java">
-        <patternset refid="compiler.resources"/>
-        <type type="file"/>
-      </fileset>
-      <fileset dir="${module.java-service-sample.basedir}/src/app/resources">
-        <patternset refid="compiler.resources"/>
-        <type type="file"/>
-      </fileset>
-    </copy>
-  </target>
+        <copy todir="${target.app.dir}">
+            <fileset dir="${build.basedir}/src/app/java">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${build.basedir}/src/app/resources">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
 
-  <target name="compile.module.java-service-sample.tests"
-          depends="register.custom.compilers,compile.module.java-service-sample.production"
-          description="compile module java-service-sample; test classes" unless="skip.tests">
-    <mkdir dir="${java-service-sample.testoutput.dir}"/>
-    <javac2 destdir="${java-service-sample.testoutput.dir}" debug="${compiler.debug}"
-            nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true"
-            executable="${module.jdk.bin.java-service-sample}/javac">
-      <compilerarg line="${compiler.args.java-service-sample}"/>
-      <bootclasspath refid="java-service-sample.module.bootclasspath"/>
-      <classpath refid="java-service-sample.module.classpath"/>
-      <src refid="java-service-sample.module.test.sourcepath"/>
-      <patternset refid="excluded.from.compilation.java-service-sample"/>
-    </javac2>
+    <target name="compile.module.java-service-sample.tests"
+            depends="register.custom.compilers,compile.module.java-service-sample.production"
+            description="compile module java-service-sample; test classes" unless="skip.tests">
+        <mkdir dir="${target.test.dir}"/>
+        <javac2 destdir="${target.test.dir}"
+                debug="${compiler.debug}"
+                includeantruntime="false"
+                nowarn="${compiler.generate.no.warnings}"
+                memorymaximumsize="${compiler.max.memory}"
+                fork="true"
+                executable="${jdk.bin}/javac">
+            <compilerarg line="${compiler.all.args}"/>
+            <bootclasspath refid="java-service-sample.module.bootclasspath"/>
+            <classpath refid="java-service-sample.module.classpath"/>
+            <src refid="java-service-sample.module.test.sourcepath"/>
+            <patternset refid="excluded.files.from.compilation"/>
+        </javac2>
 
-    <copy todir="${java-service-sample.testoutput.dir}">
-      <fileset dir="${module.java-service-sample.basedir}/src/test/java">
-        <patternset refid="compiler.resources"/>
-        <type type="file"/>
-      </fileset>
-      <fileset dir="${module.java-service-sample.basedir}/src/test/resources">
-        <patternset refid="compiler.resources"/>
-        <type type="file"/>
-      </fileset>
-    </copy>
-  </target>
+        <copy todir="${target.test.dir}">
+            <fileset dir="${build.basedir}/src/test/java">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${build.basedir}/src/test/resources">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
 
-  <target name="clean.module.java-service-sample" description="cleanup module">
-    <delete dir="${java-service-sample.output.dir}"/>
-    <delete dir="${java-service-sample.testoutput.dir}"/>
-  </target>
+    <target name="init">
+        <ivy:settings file="./config/ivysettings.xml"/>
+        <mkdir dir="dist"/>
+    </target>
 
-  <!-- =================================
-        target: resolve
-       ================================= -->
-  <target name="idea" description="--> retrieve dependencies with Ivy">
-    <ivy:retrieve/>
-  </target>
+    <target name="load.dependencies.IntelliJ" description="Generate POM" depends="init">
+        <fail message="Unset property: project.version" unless="sample.service.version"/>
+
+        <delete file="${basedir}/pom.xml"/>
+
+        <ivy:resolve file="${basedir}/ivy.xml" conf="default, test"/>
+        <ivy:deliver deliverpattern="${basedir}/ivy.xml"
+                     pubrevision="${sample.service.version}"
+                     status="release"/>
+
+        <ivy:makepom ivyfile="${basedir}/ivy.xml" pomfile="${basedir}/pom.xml"/>
+    </target>
+
+    <target name="clean.module.java-service-sample" description="cleanup module">
+        <delete dir="${target.app.dir}"/>
+        <delete dir="${target.test.dir}"/>
+    </target>
 
 
+    <target name="idea" depends="retrieve, load.dependencies.IntelliJ"/>
 
-  <target name="init" description="Build initialization">
-    <!-- Perform any build initialization in this target -->
-  </target>
+    <target name="retrieve" depends="init" description="--> retrieve dependencies with Ivy">
+        <ivy:retrieve/>
+    </target>
 
-  <target name="clean" depends="clean.module.java-service-sample" description="cleanup all"/>
+    <target name="clean-lib" description="cleanup lib jars">
+        <delete file="${basedir}/pom.xml"/>
+        <delete>
+            <fileset dir="${build.basedir}/lib">
+                <include name="*"/>
+            </fileset>
+        </delete>
+    </target>
 
-  <target name="build.modules" depends="init, clean, compile.module.java-service-sample"
-          description="build all modules"/>
+    <target name="clean" depends="clean.module.java-service-sample" description="cleanup app target files"/>
 
-  <target name="all" depends="build.modules" description="build all"/>
+    <target name="clean-ivy" description="cleanup app target files">
+        <ivy:cleancache description="clean ivy cache"/>
+    </target>
+
+    <target name="clean-all" depends="clean-ivy, clean, clean-lib" description="clean all"/>
+
+    <target name="build" depends="init, clean, compile.module.java-service-sample"
+            description="build all modules"/>
 </project>

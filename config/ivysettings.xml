@@ -1,0 +1,26 @@
+<ivysettings>
+
+
+    <settings defaultResolver='central'/>
+    <resolvers>
+        <ibiblio name='central' m2compatible='true'/>
+    </resolvers>
+    <!--<settings defaultResolver="default"/>
+   <include file="${ivy.dir}/ivysettings-public.xml"/> &lt;!&ndash; This one is different &ndash;&gt;
+   <include url="${ivy.default.settings.dir}/ivysettings-shared.xml"/>
+   <include url="${ivy.default.settings.dir}/ivysettings-local.xml"/>
+   <include url="${ivy.default.settings.dir}/ivysettings-main-chain.xml"/>
+   <include url="${ivy.default.settings.dir}/ivysettings-default-chain.xml"/>-->
+    <!-- <properties file="${ivy.settings.dir}/ivysettings-file.properties" />
+     <settings defaultCache="${cache.dir}" defaultResolver="ibiblio" checkUpToDate="false" />
+     <resolvers>
+         <ibiblio name="ibiblio" />
+         <filesystem name="internal">
+             <ivy pattern="${repository.dir}/[module]/ivy-[revision].xml" />
+             <artifact pattern="${repository.dir}/[module]/[artifact]-[revision].[ext]" />
+         </filesystem>
+     </resolvers>
+     <modules>
+         <module organisation="jayasoft" name=".*" resolver="internal" />
+     </modules>-->
+</ivysettings>

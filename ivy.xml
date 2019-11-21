@@ -1,12 +1,25 @@
-
-
-<ivy-module version="1.0"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            version="1.0"
             xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
-    <info organisation="hftn" module="java-service-sample"/>
+    <info organisation="hftn"
+          module="java-service-sample"
+          revision="1.0"
+          status="release"/>
+
+    <configurations defaultconfmapping="default">
+        <conf name="default"/>
+        <conf name="test" extends="default" description="test"/>
+    </configurations>
+
+    <publications>
+        <artifact name="java-service-sample" type="jar"/>
+        <artifact name="java-service-sample" type="pom"/>
+    </publications>
+
     <dependencies>
 
-        <dependency org="org.slf4j" name="slf4j-api" rev="2.0.0-alpha0"/>
+        <dependency org="org.slf4j" name="slf4j-api" rev="2.0.0-alpha1" revConstraint="2.0.0-alpha0"/>
         <dependency org="org.slf4j" name="slf4j-log4j12" rev="2.0.0-alpha1"/>
 
         <dependency org="com.google.inject" name="guice" rev="4.2.2"/>
@@ -64,4 +77,3 @@
         <dependency org="commons-cli" name="commons-cli" rev="1.0"/>
     </dependencies>
 </ivy-module>
-
