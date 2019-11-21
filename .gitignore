@@ -25,3 +25,11 @@ hs_err_pid*
 # Intellij file
 *.iml
 
+# IntelliJ configs
+.idea
+
+.DS_Store
+
+#Maven files
+pom.xml
+
