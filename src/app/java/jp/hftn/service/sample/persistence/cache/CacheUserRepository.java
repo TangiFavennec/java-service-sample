@@ -1,7 +1,6 @@
 package jp.hftn.service.sample.persistence.cache;
 
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
 import jp.hftn.service.core.annotations.UnCached;
 import jp.hftn.service.sample.model.User;
 import jp.hftn.service.sample.persistence.model.UserRepository;
@@ -18,14 +17,14 @@ public class CacheUserRepository implements UserRepository {
     private final Map<Integer, User> kvStore;
 
     @Inject
-    public CacheUserRepository(@UnCached final UserRepository innerRepository ) {
+    public CacheUserRepository(@UnCached final UserRepository innerRepository) {
         this.innerRepository = innerRepository;
         kvStore = new HashMap<>();
     }
 
     @Override
     public Collection<User> getUsers() {
-            return innerRepository.getUsers();
+        return innerRepository.getUsers();
     }
 
     @Override

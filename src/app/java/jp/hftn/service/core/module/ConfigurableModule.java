@@ -6,10 +6,10 @@ import java.util.Properties;
 
 public class ConfigurableModule extends AbstractModule {
 
+    Properties properties;
+
     public ConfigurableModule() {
         properties = new Properties();
     }
-
-    Properties properties;
 
 }

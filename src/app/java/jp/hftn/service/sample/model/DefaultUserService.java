@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.Collection;
 
-@AllArgsConstructor(onConstructor = @__({ @Inject}))
+@AllArgsConstructor(onConstructor = @__({@Inject}))
 public class DefaultUserService implements UserService {
 
     private final UserRepository userRepository;

@@ -30,7 +30,8 @@ public abstract class JerseyModule extends AbstractModule {
         bind(String.class).annotatedWith(named("context.path")).toInstance("/");
         bind(JerseyConfiguration.class);
         bind(Server.class).toProvider(JettyServerProvider.class);
-        bind(new TypeLiteral<Supplier<Injector>>() {}).toInstance(injectorProvider::get);
+        bind(new TypeLiteral<Supplier<Injector>>() {
+        }).toInstance(injectorProvider::get);
         bind(JerseyServer.class);
     }
 

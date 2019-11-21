@@ -3,7 +3,6 @@ package jp.hftn.service.sample.persistence.sql;
 import jp.hftn.service.sample.model.User;
 import jp.hftn.service.sample.persistence.model.UserRepository;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
