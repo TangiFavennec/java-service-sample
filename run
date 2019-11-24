@@ -1,0 +1,7 @@
+
+
+
+
+
+java -classpath ./target/classes:lib/*.jar jp.hftn.service.sample.Service
+     -jar ./dist/java-service-sample_jar.jar
