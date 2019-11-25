@@ -16,6 +16,18 @@ Make sure the following are installed on your computer (For MacOS or Linus users
 1) ```git clone``` this repository
 2) run ```ant idea``` then run ```build```
 
+Some additional targets for ant
+
+- ```clean``` : clean binaries
+- ```clean-lib``` : clean imported libraries
+- ```clean-dist``` : clean project artifact
+- ```clean-ivy``` : clean ivy cache
+- ```clean-all``` : clean binaries, artifacts, imported libraries, ivy cache
+- ```resolve``` : import and resolve dependencies (import from ivy)
+- ```build``` : build binaries
+- ```build-all``` :  import and resolve dependencies, build binaries, generate artifact
+
+
 ### Run the application
 
 ```./run```
