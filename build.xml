@@ -222,6 +222,8 @@
         <delete dir="${bin.test.dir}"/>
     </target>
 
+    <target name="clean" depends="clean-bin" description="cleanup app target files"/>
+
     <target name="clean-lib" description="cleanup lib jars">
         <delete>
             <fileset dir="${basedir}/lib">
@@ -238,10 +240,9 @@
         <ivy:cleancache description="clean ivy cache"/>
     </target>
 
-    <target name="clean" depends="clean-bin" description="cleanup app target files"/>
-
     <target name="clean-all" depends="clean-ivy, clean-lib, clean-dist, clean" description="clean all"/>
 
-    <target name="build" depends="init, clean, compile.all"
-            description="build binaries"/>
+    <target name="build" depends="init, clean, compile.all" description="build binaries"/>
+
+    <target name="build-all" depends="build, build-jar"/>
 </project>
